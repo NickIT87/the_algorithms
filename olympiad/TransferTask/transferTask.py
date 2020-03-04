@@ -45,11 +45,30 @@ def makeGraph(data, datastr):
 	##    [0 0 0 1 0 0] f 5
 
 def computations(G, start, finish):
-	for i in G:
-		print(i)
-	print(start, finish)
+	#for i in G:
+	#	print(i)
+	#print(start, finish)
+	# print(G[0][1]) 		# проверка ребра
+	# print(sum(G[0])) 	# кол-во смежных вершин
 
-	# start here ...
+	stack = []
+	queue = []
+	visited = []
+	for i in range(0,6):
+		visited.append(False) # DO REFACTOR
+		print(visited)
+	stack.append(start)
+	queue.append(start)
+	visited[start] = True
+	while len(queue) != 0:
+		node = queue.pop()
+		if(node == finish):
+			print(node)
+		print(node)
+		# for c in 2, 4, 5
+
+
+
 
 
 def solution():
