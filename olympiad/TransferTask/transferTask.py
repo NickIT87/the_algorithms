@@ -54,12 +54,12 @@ def computations(G, start, finish):
 	stack = []
 	queue = []
 	visited = []
-	for i in range(0,6):
+	for i in range(0,len(G)):
 		visited.append(False) # DO REFACTOR
-		print(visited)
 	stack.append(start)
 	queue.append(start)
 	visited[start] = True
+	print(visited)
 	while len(queue) != 0:
 		node = queue.pop()
 		if(node == finish):
