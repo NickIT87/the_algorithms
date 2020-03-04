@@ -54,18 +54,55 @@ def computations(G, start, finish):
 	stack = []
 	queue = []
 	visited = []
+	V_counter = 0
 	for i in range(0,len(G)):
 		visited.append(False) # DO REFACTOR
-	stack.append(start)
+	#stack.append(start)
 	queue.append(start)
 	visited[start] = True
 	print(visited)
-	while len(queue) != 0:
+	r = [1]
+	cycle_counter = 0
+	while len(r) != 0:
+		cycle_counter += 1
 		node = queue.pop()
 		if(node == finish):
 			print(node)
-		print(node)
-		# for c in 2, 4, 5
+		print("node", node)
+		V_counter = sum(G[node])
+		print("Vertecies_counter: ",  V_counter)
+		for i in range(len(G)):
+			if G[V_counter][i] == 1:
+				stack.append(i)
+		queue.append(stack.pop())
+
+
+
+		print("stack: ", stack)
+		print("queue: ", queue)
+		print("cycle_counter", cycle_counter)
+		r.pop()
+
+
+
+
+	print("V-cntr pverflow: ", V_counter)
+	print(G[0][1])
+	print(G[0][4])
+	print(G[1][0])
+	print(G[1][2])
+	print(G[1][4])
+	print(G[2][1])
+	print(G[2][3])
+	print(G[3][2])
+	print(G[3][4])
+	print(G[3][5])
+	print(G[4][0])
+	print(G[4][1])
+	print(G[4][3])
+	print(G[5][3])
+
+
 
 
 
