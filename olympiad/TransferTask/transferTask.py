@@ -1,4 +1,4 @@
-# graphs representation complete
+# graphs computations in progress...
 
 def loadDataString():
 	file = open('data.txt', 'r')
@@ -44,6 +44,13 @@ def makeGraph(data, datastr):
 	##    [1 1 0 1 0 0] e 4
 	##    [0 0 0 1 0 0] f 5
 
+def computations(G, start, finish):
+	for i in G:
+		print(i)
+	print(start, finish)
+
+	# start here ...
+
 
 def solution():
 	data = loadDataArray()
@@ -51,12 +58,7 @@ def solution():
 	start = data[0]
 	finish = data[1]
 	G = makeGraph(data, datastr)
-
-	for i in G:
-		print(i)
-
-	print(start, finish)
-
+	computations(G, start, finish)
 
 
 if __name__ == "__main__":
