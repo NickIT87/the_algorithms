@@ -9,11 +9,19 @@ playing = [8,5,7,8,13]
 
 slices = [7,2,2,13]
 activities = ['sleeping','eating','working','playing']
-cols = ['c','m','r','k']
+cols = ['c','m','r','y']
 
-plt.pie(slices, labels=activities, colors=cols)
-plt.xlabel('X')
-plt.ylabel('Y')
+plt.pie(slices,
+        labels=activities,
+        colors=cols,
+        startangle=90,
+        shadow=True,
+        explode=(0,0.1,0,0),
+        autopct='%1.1f%%')
+
+
+#plt.xlabel('X')
+#plt.ylabel('Y')
 plt.title("Interesting Graph\ncheck it out")
-plt.legend()
+#plt.legend()
 plt.show()
