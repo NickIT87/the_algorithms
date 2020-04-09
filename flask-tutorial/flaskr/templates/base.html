@@ -1,6 +1,8 @@
 <!doctype html>
 <title>{% block title %}{% endblock %} - Flaskr</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
 <nav>
   <h1>Flaskr</h1>
   <ul>
@@ -13,6 +15,8 @@
     {% endif %}
   </ul>
 </nav>
+
+
 <section class="content">
   <header>
     {% block header %}{% endblock %}
