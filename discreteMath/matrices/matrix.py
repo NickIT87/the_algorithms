@@ -45,13 +45,18 @@ def matrix_position(index, matrix_array=0):
 
     row_position = int(index / columns)
     print("row_position = ", row_position)
+    x = int(index / columns)
+    print("x: ", x)
 
     abs_pos = columns - ((columns * (row_position + 1)) - index)
+    y = index - columns * row_position
     print("abs_pos: = ", abs_pos)
+    print("Y: ", y)
+
 
     print("***************************")
 
 
 if __name__ == "__main__":
-    matrix_position(10, test_data2)
+    matrix_position(13, test_data)
     #matrix_position(13, "asdfasdf")
