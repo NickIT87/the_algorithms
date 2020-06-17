@@ -5,6 +5,12 @@ test_data = [[  0,  1,  2,  3,  4 ],
              [ 15, 16, 17, 18, 19 ]]
 
 
+test_data2 = [[  0,  1,  2,  3,  4,  5,  6 ],
+              [  7,  8,  9, 10, 11, 12, 13 ],
+              [ 13, 14, 15, 16, 17, 18, 19 ],
+              [ 20, 21, 22, 23, 24, 25, 26 ]]
+
+
 def matrix_position(index, matrix_array=0):
     print("___________________________")
     a, b, c, d, e = range(5)
@@ -40,11 +46,12 @@ def matrix_position(index, matrix_array=0):
     row_position = int(index / columns)
     print("row_position = ", row_position)
 
-
+    abs_pos = columns - ((columns * (row_position + 1)) - index)
+    print("abs_pos: = ", abs_pos)
 
     print("***************************")
 
 
 if __name__ == "__main__":
-    matrix_position(13, test_data)
+    matrix_position(10, test_data2)
     #matrix_position(13, "asdfasdf")
