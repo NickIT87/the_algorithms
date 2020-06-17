@@ -1,22 +1,50 @@
-def matrix(index):
-    a, b, c, d, e, f, g = range(7)
-    # 	   a   b   c   d   e   f
-    W = [[ 0,  1,  2,  3,  4,  5 ],  # a
-         [ 6,  7,  8,  9, 10, 11 ],  # b
-         [12, 13, 14, 15, 16, 17 ],  # c
-         [18, 19, 20, 21, 22, 23 ],  # d
-         [24, 25, 26, 27, 28, 29 ],  # e
-         [30, 31, 32, 33, 34, 35 ],  # f
-         [36, 37, 38, 39, 40, 41 ]]  # g
 
+test_data = [[  0,  1,  2,  3,  4 ],
+             [  5,  6,  7,  8,  9 ],
+             [ 10, 11, 12, 13, 14 ],
+             [ 15, 16, 17, 18, 19 ]]
+
+
+def matrix_position(index, matrix_array=0):
+    print("___________________________")
+    a, b, c, d, e = range(5)
+    # 	    a   b   c   d   e
+    W = [[  0,  1,  2,  3,  4 ],  # a
+         [  5,  6,  7,  8,  9 ],  # b
+         [ 10, 11, 12, 13, 14 ],  # c
+         [ 15, 16, 17, 18, 19 ]]  # d
+    print(W)
     print("index =", index)
-    print("len(W[a]) =", len(W[a]))
+    #print("len(W[a]) =", len(W[a]))
+    #print(type(30 / len(W[a])))
+    #print(31 / len(W[a]))
+    #print(35 / len(W[a]))
+    print("___________________________")
+    print("***************************")
+    G = matrix_array
+    print(G)
+    print("index: =", index)
+    if (G != 0) :
+        rows = len(G)
+        columns = len(G[0])
+        cells = rows * columns
+    else:
+        rows = 0
+        columns = 0
+        cells = rows * columns
+        print("Ошибка, не передан массив...", G)
 
-    print(type(30 / len(W[a])))
-    print(31 / len(W[a]))
-    print(35 / len(W[a]))
+    print(cells, rows, columns)
+    print(type(G))
 
+    row_position = int(index / columns)
+    print("row_position = ", row_position)
+
+
+
+    print("***************************")
 
 
 if __name__ == "__main__":
-    matrix(25)
+    matrix_position(13, test_data)
+    #matrix_position(13, "asdfasdf")
