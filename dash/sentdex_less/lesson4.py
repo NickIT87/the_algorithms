@@ -12,6 +12,7 @@ Y = deque(maxlen=20)
 X.append(1)
 Y.append(1)
 
+
 app = dash.Dash(__name__)
 app.layout = html.Div([
     dcc.Graph(id='live-graph', animate=True),
