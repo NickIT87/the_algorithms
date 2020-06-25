@@ -18,7 +18,7 @@ def update_value(input_data):
     try:
         return str(float(input_data)**2)
     except:
-        return "Some error"
+        return "Enter number"
 
 if __name__ == '__main__':
     app.run_server(debug=True)
