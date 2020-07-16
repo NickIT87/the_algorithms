@@ -7,7 +7,7 @@ Library  SeleniumLibrary
 GoogleTest
     #create webdriver  chrome    executable_path="C:\drivers\chromedriver.exe"
     open browser    http://www.google.com   chrome
-    input text  name:q  testng
+    input text  name:q  test
     click element   id:gsr
 
 *** Keywords ***
