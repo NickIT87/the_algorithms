@@ -34,8 +34,3 @@ class EpicApp(App):
 
 if __name__ == "__main__":
     EpicApp().run()
-
-
-
-
-
