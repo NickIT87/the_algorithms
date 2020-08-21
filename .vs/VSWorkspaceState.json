@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\dash\\sentdex_less"
+    "\\dash\\sentdex_less",
+    "\\kivyGUI",
+    "\\kivyGUI\\sentdexTut"
   ],
-  "SelectedNode": "\\main.py",
+  "SelectedNode": "\\kivyGUI\\sentdexTut\\kivyapp.py",
   "PreviewInSolutionExplorer": false
 }
