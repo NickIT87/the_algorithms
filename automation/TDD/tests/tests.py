@@ -19,6 +19,12 @@ class TestNitroSalt(unittest.TestCase):
     def test_nitro_salt_returns_integer(self):
         self.assertIsInstance(nitro_salt(1000), int)
 
+    def test_nitro_salt_receives_string_returns_integer(self):
+        self.assertEqual(nitro_salt('1000'), 10)
+
+    def test_nitro_salt_receives_alpha_string_returns_zero(self):
+        self.assertEqual(nitro_salt('asdfsadf'), 0)
+
 
 if __name__ == "__main__":
     unittest.main()
