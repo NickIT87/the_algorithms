@@ -14,6 +14,7 @@ from main import *
 class TestNitroSalt(unittest.TestCase):
     def test_nitro_salt_returns_integer(self):
         self.assertEqual(nitro_salt(1000), 10)
+        self.assertEqual(nitro_salt(1500), 15)
 
 
 if __name__ == "__main__":
