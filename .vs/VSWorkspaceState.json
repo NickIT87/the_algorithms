@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\automation",
-    "\\automation\\TDD",
-    "\\automation\\TDD\\tests",
-    "\\kivyGUI\\sentdexTut"
+    "\\automation\\TDD"
   ],
-  "SelectedNode": "\\automation\\TDD\\tests\\tests.py",
+  "SelectedNode": "\\automation",
   "PreviewInSolutionExplorer": false
 }
