@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\automation",
-    "\\automation\\TDD"
+    "\\automation\\TDD",
+    "\\automation\\TDD\\tests",
+    "\\NLTK",
+    "\\NLTK\\sentdex"
   ],
-  "SelectedNode": "\\automation",
+  "SelectedNode": "\\NLTK\\sentdex\\lessonOne.py",
   "PreviewInSolutionExplorer": false
 }
