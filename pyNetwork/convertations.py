@@ -23,4 +23,10 @@ b ^= a
 a ^= b
 
 print(a, b)
-# end 
+
+# ternary conjunction
+
+def rgb(r, g, b):
+    return r ^ g ^ b
+
+print(rgb(1,0,1))
