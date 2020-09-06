@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\NLTK",
-    "\\NLTK\\sentdex"
+    "\\pyNetwork"
   ],
-  "SelectedNode": "\\NLTK\\sentdex\\lessFour.py",
+  "SelectedNode": "\\pyNetwork\\convertations.py",
   "PreviewInSolutionExplorer": false
 }

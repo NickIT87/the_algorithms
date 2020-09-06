@@ -6,3 +6,9 @@ bin_b = bin(123)
 
 print(type(bin_b))
 print(int(bin_b, 2))
+
+
+x = True
+y = False
+
+print((x ^ y) ^ y)
