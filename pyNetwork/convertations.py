@@ -30,3 +30,10 @@ def rgb(r, g, b):
     return r ^ g ^ b
 
 print(rgb(1,0,1))
+
+# fibonacci
+
+def fib(n):
+    return 1 if (n <= 2) else fib(n-1)+fib(n-2)
+
+print(fib(20))
