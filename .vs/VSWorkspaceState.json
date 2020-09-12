@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\pyNetwork"
+    "\\automation",
+    "\\automation\\funcPerfomance"
   ],
-  "SelectedNode": "\\pyNetwork\\convertations.py",
+  "SelectedNode": "\\automation\\funcPerfomance\\perfomance_test.py",
   "PreviewInSolutionExplorer": false
 }
