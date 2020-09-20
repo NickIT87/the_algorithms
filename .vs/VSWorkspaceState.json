@@ -1,11 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\automation\\funcPerfomance",
-    "\\automation\\TDD",
-    "\\automation\\TDD\\tests",
-    "\\finance\\seaborn"
+    "\\astropy",
+    "\\astropy\\methodical",
+    "\\NLTK\\sentdex"
   ],
-  "SelectedNode": "\\PandasTutorial",
+  "SelectedNode": "\\astropy\\methodical\\task1lvl10.py",
   "PreviewInSolutionExplorer": false
 }
