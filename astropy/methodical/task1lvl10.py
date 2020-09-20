@@ -23,3 +23,8 @@ F2 = powerOfGravity(M1s, M2s, r)
 
 print(F1)
 print(F2)
+
+
+Fabs = F2 / F1
+
+print(Fabs)
