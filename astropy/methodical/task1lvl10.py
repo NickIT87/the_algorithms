@@ -16,7 +16,7 @@ def altGravityPower(mass, radius):
 # tasks defenitions M, R, V = M / p
 M = 2
 R = 2
-p = 2
+p = 2.71
 
 M1 = M2 = M
 R1 = R2 = R
