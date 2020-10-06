@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\astropy",
-    "\\astropy\\methodical"
+    "\\astropy\\methodical",
+    "\\sqlite\\imgupload"
   ],
-  "SelectedNode": "\\astropy\\methodical\\task1lvl10.py",
+  "SelectedNode": "\\image.db",
   "PreviewInSolutionExplorer": false
 }
