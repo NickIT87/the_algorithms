@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\astropy\\methodical",
+    "\\quantum",
     "\\sqlite\\imgupload"
   ],
-  "SelectedNode": "\\image.db",
+  "SelectedNode": "\\quantum\\.ipynb_checkpoints",
   "PreviewInSolutionExplorer": false
 }
