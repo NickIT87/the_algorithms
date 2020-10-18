@@ -12,12 +12,12 @@ bin_b = bin(123)
 #   6:    0110
 #   9:    1001
 #   15:   1111
-bitstr1 = "1111"
-bitstr2 = "0110"
+bitstr1 = "11111111"
+bitstr2 = "01101001"
 #print(int(bitstr1, 2), int(bitstr2, 2))
 
-#print( bitstr1 and bitstr2 )
+print( "11111111" and bitstr2 )    # solution for find some bit value
 
 #print(int(bitstr1, 2) and int(bitstr2, 2))
 
-print(int(bin(15) and bin(9), 2))
+print(int(bin(15) and bin(6), 2))

@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\quantum"
+    "\\pyNetwork",
+    "\\quantum",
+    "\\quantum\\samples"
   ],
-  "SelectedNode": "\\quantum\\.ipynb_checkpoints",
+  "SelectedNode": "\\quantum\\samples\\bitmanipulation.py",
   "PreviewInSolutionExplorer": false
 }
