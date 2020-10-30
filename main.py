@@ -1,5 +1,6 @@
 #the algorithms
 
+
 d1 = {1: 'a1', 
       2: {3: 'a3'}, 
       5: 'a5'}
@@ -16,6 +17,7 @@ print(d0)
 
 print("d1 before: ", d1)
 d1.update(d2)
+print(d1)
 d1.update(d0)
 d1.update(d2[2])
 print("d1 after: ", d1)
