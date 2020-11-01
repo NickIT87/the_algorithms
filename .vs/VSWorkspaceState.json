@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\digital_life"
   ],
-  "SelectedNode": "\\main.py",
+  "SelectedNode": "\\digital_life\\electronic_life.py",
   "PreviewInSolutionExplorer": false
 }
