@@ -21,14 +21,15 @@ def update():
 
 
 def draw():
-    game_window.draw()
     window.fill(BACKGROUND)
+    game_window.draw()
+    
 
 
 pygame.init()
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
-game_window = Game_window(window, 10, 10)
+game_window = Game_window(window, 100, 180)
 
 running = True
 while running:
