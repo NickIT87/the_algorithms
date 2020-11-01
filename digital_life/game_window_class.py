@@ -1,7 +1,6 @@
 import pygame
-
-
 vec = pygame.math.Vector2
+
 
 class Game_window:
     def __init__(self, screen, x, y):
