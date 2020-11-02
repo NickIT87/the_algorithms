@@ -39,5 +39,5 @@ while running:
     pygame.display.update()
     clock.tick(FPS)
 pygame.quit()
-sys.exit()
+#sys.exit()
 
