@@ -1,8 +1,10 @@
 import pygame
+import random
 
 
 class Cell:
     def __init__(self, surface, grid_x, grid_y):
+        # self.alive = random.choice([True, False, False, False])
         self.alive = False
         self.surface = surface
         self.grid_x = grid_x
@@ -18,5 +20,5 @@ class Cell:
             self.image.fill((0, 0, 0))
         else:
             self.image.fill((0, 0, 0))
-            pygame.draw.rect(self.image, (255, 255, 255), (2,2,18,18))
+            pygame.draw.rect(self.image, (255, 255, 255), (1,1,18,18))
         self.surface.blit(self.image, (self.grid_x*20, self.grid_y*20))
