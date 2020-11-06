@@ -12,9 +12,13 @@ class Cell:
         self.image = pygame.Surface((20,20))
         self.rect = self.image.get_rect()
         self.neighbours = []
+        self.alive_neighbours = 0
 
     def update(self):
         self.rect.topleft = (self.grid_x*20, self.grid_y*20)
+        for cell in self.neighbours:
+            if cell.alive:
+                self.alive_neighbours += 1
 
     def draw(self):
         if self.alive:
