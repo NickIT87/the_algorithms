@@ -1,5 +1,6 @@
 import pygame
 from settings import * 
+from grid_class import *
 
 
 class Game:
@@ -7,6 +8,7 @@ class Game:
         pygame.init()
         self.running = True
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.grid = Grid(self)
 
     def run(self):
         while self.running:
@@ -25,4 +27,5 @@ class Game:
 
     def draw(self):
         self.screen.fill(BG_COLOUR)
+        self.grid.draw()
         pygame.display.update()
