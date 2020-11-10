@@ -6,7 +6,7 @@ import pygame
 class Grid:
     def __init__(self, game):
         self.game = game
-        self.pos = (0,0)
+        self.pos = (GRID_POS[0], GRID_POS[1])
         self.cells = []
         self.make_grid()
 
@@ -17,9 +17,9 @@ class Grid:
         print(self.cells)
 
     def update(self):
-        pass
+        for cell in self.cells:
+            cell.update()
     
     def draw(self):
-        pass
-        #pygame.draw.rect(self.game.screen, GRID_COLOUR, (self.pos[0], self.pos[1],
-        #                                                 3*CELL_SIZE, 3*CELL_SIZE), 2)
+        for cell in self.cells:
+            cell.draw()
