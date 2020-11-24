@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\finance",
-    "\\finance\\OR"
+    "\\finance\\OR",
+    "\\tictactoe"
   ],
-  "SelectedNode": "\\finance\\OR\\pulp_test.py",
+  "SelectedNode": "\\tictactoe\\game_class.py",
   "PreviewInSolutionExplorer": false
 }
