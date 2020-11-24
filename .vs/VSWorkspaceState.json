@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\finance",
+    "\\finance\\OR"
   ],
-  "SelectedNode": "\\main.py",
+  "SelectedNode": "\\finance\\OR\\pulp_test.py",
   "PreviewInSolutionExplorer": false
 }

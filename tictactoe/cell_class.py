@@ -14,7 +14,6 @@ class Cell:
         pass
 
     def draw(self):
-        
         pygame.draw.rect(self.grid.game.screen, CELL_BG_COLOUR, 
                          (self.grid.pos[0]+(self.pos[0]*self.size), self.grid.pos[1]+(self.pos[1]*self.size), self.size, self.size),2 )
 

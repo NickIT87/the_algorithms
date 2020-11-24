@@ -21,6 +21,9 @@ class Game:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if click_on_grid(pygame.mouse.get_pos()):
+                    pass
 
     def update(self):
         pass
@@ -29,3 +32,8 @@ class Game:
         self.screen.fill(BG_COLOUR)
         self.grid.draw()
         pygame.display.update()
+
+    def click_on_grid(self, pos):
+        pass
+        #if pos[0] > 
+        # https://www.youtube.com/watch?v=9y5ZmMUgh40&list=PLryDJVmh-ww1y45GW1HRkkfnyQmiONmmK&index=4
