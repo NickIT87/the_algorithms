@@ -1,5 +1,5 @@
 import time
-from locust import HttpUser, task
+from locust import HttpUser, task, between
 
 class QuickstartUser(HttpUser):
     @task
@@ -7,7 +7,7 @@ class QuickstartUser(HttpUser):
         self.client.get("https://martinschrader.pythonanywhere.com")
         print("executing my_task")
         
-
+    wait_time = between(0.5, 10)
     
 
 
