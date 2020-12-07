@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\NLTK",
+    "\\automation",
+    "\\automation\\locustio",
     "\\NLTK\\book"
   ],
-  "SelectedNode": "\\NLTK\\book\\concord.py",
+  "SelectedNode": "\\automation\\locustio\\locust_http_get.py",
   "PreviewInSolutionExplorer": false
 }
