@@ -1,10 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\discreteMath\\lambda",
+    "\\discreteMath",
+    "\\discreteMath\\exam",
     "\\mpl",
     "\\mpl\\barcharts"
   ],
-  "SelectedNode": "\\mpl\\barcharts\\presentation.py",
+  "SelectedNode": "\\discreteMath\\exam\\thirdtsk.py",
   "PreviewInSolutionExplorer": false
 }

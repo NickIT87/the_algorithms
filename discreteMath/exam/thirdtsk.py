@@ -11,6 +11,7 @@ def totalOddElem(data_array):
 
     return ansv
 
+debug_data = [1, 2, 3, 4]
 
 if __name__ == "__main__":
-    print(totalOddElem(data))
+    print(totalOddElem(debug_data))
