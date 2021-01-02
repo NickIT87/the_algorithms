@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\discreteMath",
+    "\\discreteMath\\exam"
   ],
+  "SelectedNode": "\\discreteMath\\exam\\thirdtsk.py",
   "PreviewInSolutionExplorer": false
 }
