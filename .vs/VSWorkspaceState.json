@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\GUI_TK",
-    "\\GUI_TK\\samples"
+    "\\GUI_TK\\tutorials"
   ],
-  "SelectedNode": "\\GUI_TK\\samples\\auth.py",
+  "SelectedNode": "\\GUI_TK\\tutorials\\single.py",
   "PreviewInSolutionExplorer": false
 }
