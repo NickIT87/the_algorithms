@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\GUI_TK",
-    "\\GUI_TK\\tutorials"
+    "\\GUI_TK\\tutorials",
+    "\\kivyGUI",
+    "\\kivyGUI\\codetut"
   ],
-  "SelectedNode": "\\GUI_TK\\tutorials\\single.py",
+  "SelectedNode": "\\kivyGUI\\codetut\\hello.py",
   "PreviewInSolutionExplorer": false
 }
