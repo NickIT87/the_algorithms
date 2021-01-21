@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\kivyGUI\\codetut",
-    "\\mpl"
+    "\\discreteMath",
+    "\\discreteMath\\exam",
+    "\\discreteMath\\graphs",
+    "\\discreteMath\\lambda",
+    "\\discreteMath\\school_tsk"
   ],
-  "SelectedNode": "\\mpl\\flash.py",
+  "SelectedNode": "\\discreteMath\\lambda\\lambda.py",
   "PreviewInSolutionExplorer": false
 }
