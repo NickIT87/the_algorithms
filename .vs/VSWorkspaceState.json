@@ -1,12 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\automation\\locustio",
     "\\discreteMath",
     "\\discreteMath\\exam",
     "\\discreteMath\\graphs",
-    "\\discreteMath\\lambda",
+    "\\discreteMath\\school_tasks",
     "\\discreteMath\\school_tsk"
   ],
-  "SelectedNode": "\\discreteMath\\lambda\\lambda.py",
+  "SelectedNode": "\\discreteMath\\school_tasks\\lambda.py",
   "PreviewInSolutionExplorer": false
 }
