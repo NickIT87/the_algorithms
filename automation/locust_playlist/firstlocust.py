@@ -1,7 +1,14 @@
+from locust import User, TaskSet
 
 
-class UserBehaviour:
-    pass
+def login(l):
+    print("I am logged in")
 
-class User:
-    pass
+def logout(m):
+    print("I am logged out")
+
+class UserBehaviour(TaskSet):
+    tasks = [login, logout]
+
+class User(User):
+    task_set = UserBehaviour
