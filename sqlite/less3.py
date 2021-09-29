@@ -26,7 +26,7 @@ def dynamic_data_entry():
 
 def read_from_db():
     #c.execute("SELECT * FROM stuffToPlot WHERE value=51 AND keyword='Python'")
-    c.execute("SELECT * FROM stuffToPlot WHERE unix > 1452618731")
+    c.execute("SELECT * FROM stuffToPlot WHERE unix > 1582998880")
     #c.execute("SELECT * FROM stuffToPlot")
     #data = c.fetchall()
     #print(data)
