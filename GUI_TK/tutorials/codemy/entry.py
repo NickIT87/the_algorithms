@@ -4,6 +4,7 @@ root = Tk()
 
 e = Entry(root, width=50, borderwidth=5)
 e.pack()
+e.insert(0, "Enter Your Name: ")
 
 def myClick():
     hello = "Hello " + e.get()
@@ -12,7 +13,7 @@ def myClick():
 
 myButton = Button(
     root, 
-    text="Enter Your name", 
+    text="Click Me", 
     pady=50, 
     command=myClick,
     fg="blue",
