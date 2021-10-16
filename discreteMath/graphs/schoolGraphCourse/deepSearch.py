@@ -11,10 +11,10 @@ print('Порядок обхода вершин')
 
 
 def viewVertices(v):
-    print(v, end = ' ')     # результат порядка обхода
-    state[v] = True         # отметка о проходе по ребру
-    for vertex in graph[v]:
-        if not state[vertex]:
+    print(v, end = ' ')             # результат порядка обхода
+    state[v] = True                 # отметка о проходе по ребру
+    for vertex in graph[v]:         # цикл обработки каждой вершины
+        if not state[vertex]:       
             viewVertices(vertex)
 
 
