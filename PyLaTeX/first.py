@@ -17,9 +17,13 @@ def fill_document(doc):
 if __name__ == "__main__":
     doc = Document('basic')
 
+    #doc.preamble.append(NoEscape(r'\usepackage[T2A]{fontenc}'))
     #doc.preamble.append(NoEscape(r'\usepackage[russian]{babel}'))
+    #doc.preamble.append(NoEscape(r'\usepackage[koi8-r]{inputenc}'))
 
-    doc.preamble.append(Command('title', 'Eng'))
+    doc.preamble.append(NoEscape(r'\usepackage[T2A]{fontenc}'))
+
+    doc.preamble.append(Command('title', 'Рус'))
     doc.preamble.append(Command('author', 'Anonymus author'))
     doc.preamble.append(Command('date', NoEscape(r'\today')))
     doc.append(NoEscape(r'\maketitle'))
