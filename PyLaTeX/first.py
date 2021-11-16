@@ -17,11 +17,11 @@ def fill_document(doc):
 if __name__ == "__main__":
     doc = Document('basic')
 
-    #doc.preamble.append(NoEscape(r'\usepackage[T2A]{fontenc}'))
-    #doc.preamble.append(NoEscape(r'\usepackage[russian]{babel}'))
+    #doc.preamble.append(NoEscape(r'\usepackage[T1, T2A]{fontenc}'))
+    doc.preamble.append(NoEscape(r'\usepackage[english, russian]{babel}'))
     #doc.preamble.append(NoEscape(r'\usepackage[koi8-r]{inputenc}'))
-
-    doc.preamble.append(NoEscape(r'\usepackage[T2A]{fontenc}'))
+    #doc.preamble.append(NoEscape(r'\DeclareUnicodeCharacter{2014}{texemdash}'))
+    
 
     doc.preamble.append(Command('title', 'Рус'))
     doc.preamble.append(Command('author', 'Anonymus author'))
@@ -30,4 +30,4 @@ if __name__ == "__main__":
     
     fill_document(doc)
 
-    doc.generate_pdf(clean_tex=False)
+    doc.generate_pdf(clean_tex=False, compiler='pdflatex')
