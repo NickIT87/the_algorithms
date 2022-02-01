@@ -12,6 +12,6 @@ main =
         else
             let
                 x1 = (- b - sqrt d) / (2 * a)
-                x2 = (- b + sqrt d) / (2 * a)
+                x2 = (- b + sqrt d) / (2 * a) :: Double
             in
                 print (x1, x2)
