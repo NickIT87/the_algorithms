@@ -1,16 +1,16 @@
-main :: IO ()
+{-# OPTIONS -Wall -Werror #-}
 
-main = 
-    if d < 0 then
-        putStrLn "no solutions"
-    else
-        let
-            x1 = (- b - sqrt d) / (2 * a)
-            x2 = (- b + sqrt d) / (2 * a) :: Double
-        in
-            print (x1, x2)
+main :: IO ()
+main 
+    | d < 0     = putStrLn "no solutions"
+    | otherwise = print (x1, x2)    
     where
-        a = 1
-        b = 2
+        a = 1 :: Double
+        b = 2.5
         c = 1
-        d = b ^ 2 - 4 * a * c
+        d = b * b - 4 * a * c
+        x1 = (- b - sqrt d) / (2 * a)
+        x2 = (- b + sqrt d) / (2 * a)
+
+{- ghcid -a filename -}
+-- $> main
