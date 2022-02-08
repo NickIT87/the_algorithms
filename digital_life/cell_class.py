@@ -4,7 +4,6 @@ import random
 
 class Cell:
     def __init__(self, surface, grid_x, grid_y):
-        # self.alive = random.choice([True, False, False, False])
         self.alive = False
         self.surface = surface
         self.grid_x = grid_x
