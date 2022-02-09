@@ -8,10 +8,10 @@ class Button:
     def __init__(
         self, surface, x, y, width, height, state='', id='', 
         function=0, colour=(255, 255, 255), hover_colour=(255, 255, 255),
-        border=True, border_width=2, border_colour=(255, 255, 255),
-        text='', font_name='', text_size=2, text_colour=(255, 255, 255),
+        border=True, border_width=2, border_colour=(0, 0, 0),
+        text='', font_name='arial', text_size=20, text_colour=(0, 0, 0),
         bold_text=False
-    )
+    ):
         self.type = 'button'
         self.x = x
         self.y = y
@@ -73,4 +73,8 @@ class Button:
         self.image.blit(text, pos)
 
     def mouse_hovering(self, pos):
-        pass
+        if pos[0] > self.pos[0] and pos[0] < self.pos[0]+self.width:
+            if pos[1] > self.pos[1] and pos[1] < self.pos[1]+self.height:
+                return True
+        else:
+            return False
