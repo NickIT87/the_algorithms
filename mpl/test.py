@@ -14,10 +14,9 @@ t = None
 #  y.append(step)
 #  step += 5
 
-
-plt.title("lesson1", color="cyan")
-plt.xlabel("time min/hour", color="lightgreen")
-plt.ylabel("speed km/h", color="lightgreen")
+plt.title("lesson1", color="black")
+plt.xlabel("time min/hour", color="green")
+plt.ylabel("speed km/h", color="green")
 plt.xticks(color="red")
 plt.yticks(color="red")
 plt.axis(xmin=0,xmax=60,ymin=0,ymax=60)

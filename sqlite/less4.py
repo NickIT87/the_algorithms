@@ -50,7 +50,7 @@ def graph_data():
         dates.append(datetime.datetime.fromtimestamp(row[0]))
         values.append(row[1])
 
-    plt.plot_date(dates, values, '-')
+    plt.plot_date(dates, values, '-.')
     plt.show()
 
 
