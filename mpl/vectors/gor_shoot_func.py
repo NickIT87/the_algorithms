@@ -32,7 +32,7 @@ axes.set_title(
 )
 
 # функция расчета параболы
-def draw_trajectory(V0:int, alpha:int, t_color:str, t_label:str, step:int=0):
+def draw_trajectory(V0:int, alpha:int, t_color:str, t_label:str, step:int=0, p_safe=False):
     # время полета
     t = 2 * V0 / g * np.sin(np.deg2rad(alpha))
     # Максимальный подъем
@@ -57,8 +57,18 @@ def draw_trajectory(V0:int, alpha:int, t_color:str, t_label:str, step:int=0):
             for dx in x
         ]
     )
+    # парабола безопасности
+    z_safety = np.array(
+        [
+            pow(V0,2)/(2*g) - g/(2*pow(V0,2))*pow(dx, 2)
+            for dx in x
+        ]
+    )
     # отрисовка параболы
     axes.plot3D(x,y,z, t_color)
+    # отрисовка параболы безопасности, если аргумент p_safe=True
+    if p_safe:
+        axes.plot3D(x,y,z_safety, 'green')
     # максимальная точка подъема
     axes.scatter3D(X2/2, step, H, marker='x', c=t_color)
     # максимальная дальность
@@ -71,15 +81,17 @@ def draw_trajectory(V0:int, alpha:int, t_color:str, t_label:str, step:int=0):
         )
     )
 
-
 # начальные скорости снарядов для полковой гаубицы Д30:
 # ОФЗ 690 м/с  КМЛ 740 м/с
 
-p1 = draw_trajectory(V0=690, alpha=45, t_color='blue', t_label='HIGH-EXPLOSIVE projectile', step=-2)
+p1 = draw_trajectory(
+    V0=690, alpha=45, t_color='blue', t_label='HIGH-EXPLOSIVE projectile', step=-2, p_safe=True
+)
 p2 = draw_trajectory(V0=740, alpha=45, t_color='red', t_label='HEAT projectile')
 p3 = draw_trajectory(V0=690, alpha=30, t_color='magenta', t_label='FlatTrajectory', step = 2)
 p4 = draw_trajectory(V0=690, alpha=60, t_color='magenta', t_label='HingedTrajectory', step = 2)
 
 # отрисовка легенды и графика
-axes.legend(handles=[p1, p2, p3, p4], loc='upper left')
+safety_parabola = mpatches.Patch(color='green', label='Парабола безопасности')
+axes.legend(handles=[p1, p2, p3, p4, safety_parabola], loc='upper left')
 plt.show()
