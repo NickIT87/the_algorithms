@@ -4,9 +4,9 @@ import numpy as np
 from random import randint
 
 
-x=np.array([x+1 for x in range(10)])
-y=np.array([0 for x in range(10)])
-z=np.array([x+1 for x in range(10)])
+x=np.array([x+1 for x in range(100)])
+y=np.array([0 for x in range(100)])
+z=np.array([z+1 for z in range(100)])
 
 
 fig=plt.figure()

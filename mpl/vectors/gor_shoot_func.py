@@ -22,7 +22,7 @@ axes.tick_params(axis='z', colors='darkblue')
 # настройки шага сетки
 axes.set_xlim([0,60000])    # X
 axes.set_ylim([-5,5])       # Y
-axes.set_zlim([0,20000])    # Z
+axes.set_zlim([0,30000])    # Z
 
 # Заголовок графика
 axes.set_title(
@@ -85,11 +85,11 @@ def draw_trajectory(V0:int, alpha:int, t_color:str, t_label:str, step:int=0, p_s
 # ОФЗ 690 м/с  КМЛ 740 м/с
 
 p1 = draw_trajectory(
-    V0=690, alpha=45, t_color='blue', t_label='HIGH-EXPLOSIVE projectile', step=-2, p_safe=True
+    V0=690, alpha=45, t_color='blue', t_label='HIGH-EXPLOSIVE projectile', step=-4, p_safe=True
 )
-p2 = draw_trajectory(V0=740, alpha=45, t_color='red', t_label='HEAT projectile')
-p3 = draw_trajectory(V0=690, alpha=30, t_color='magenta', t_label='FlatTrajectory', step = 2)
-p4 = draw_trajectory(V0=690, alpha=60, t_color='magenta', t_label='HingedTrajectory', step = 2)
+p2 = draw_trajectory(V0=740, alpha=45, t_color='red', t_label='HEAT projectile', p_safe=True)
+p3 = draw_trajectory(V0=690, alpha=30, t_color='magenta', t_label='FlatTrajectory', step = 4)
+p4 = draw_trajectory(V0=690, alpha=60, t_color='magenta', t_label='HingedTrajectory', step = 4)
 
 # отрисовка легенды и графика
 safety_parabola = mpatches.Patch(color='green', label='Парабола безопасности')
