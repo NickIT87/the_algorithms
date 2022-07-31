@@ -1,15 +1,23 @@
 def isValid(s: str) -> bool:
     result = None
 
-    for i in range(len(s)):
-        try:
-            trigger = s[i] + s[i+1] 
-            if trigger in ["(]", "(}", "[)", "[}", "{)", "{]"]:
-                return False
-            else:
-                result = True
-        except:
-            pass
+    cases = ["(]", "(}", "[)", "[}", "{)", "{]"]
+
+    for i in cases:
+        if i in s:
+            return False
+        else:
+            result = True
+
+    # for i in range(len(s)):
+    #     try:
+    #         trigger = s[i] + s[i+1] 
+    #         if trigger in ["(]", "(}", "[)", "[}", "{)", "{]"]:
+    #             return False
+    #         else:
+    #             result = True
+    #     except:
+    #         pass
 
     return result
 
