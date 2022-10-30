@@ -1,5 +1,6 @@
 import random
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def get_sample(m, n, C1, C2):
@@ -72,10 +73,20 @@ m = 2
 C1 = 0
 C2 = 7
 
-g_m = generate_game_matrix(m, n, C1, C2, False)
+g_m = generate_game_matrix(m, n, C1, C2, s_point=False)
 min_price = find_minimal_price_maximin(g_m)
 max_price = find_maximal_price_minimax(g_m)
 
 print(g_m)
 print("min: ", min_price)
 print("max: ", max_price)
+
+line1 = g_m[:, 0]
+line2 = g_m[:, 1]
+line3 = g_m[:, 2]
+
+
+plt.plot(line1, color='red')
+plt.plot(line2, color='green')
+plt.plot(line3, color='blue')
+plt.show()
