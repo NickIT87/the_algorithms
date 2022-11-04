@@ -56,7 +56,12 @@ plt.plot(line3, color='blue')
 
 print(line1)
 
-first_line = LineString([[0, line1[0]], [1, line1[1]]])
+first_line = LineString(
+    [
+        [0, line1[0]], 
+        [1, line1[1]]
+    ]
+)
 second_line = LineString([[0, line2[0]], [1, line2[1]]])
 intersection = first_line.intersection(second_line)
 
