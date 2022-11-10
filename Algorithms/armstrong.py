@@ -18,7 +18,7 @@ def check_for_armstrong(nmb):
 
 
 #num = int(input("Enter number:"))
-num = 122
+num = 153
 s = check_for_armstrong(num)
      
 if s == num:
