@@ -19,6 +19,10 @@ def check_for_armstrong(nmb: int) -> bool:
     return armstrong == num
 
 
+def isArmstrong(number):
+    return sum((int(digit) ** len(str(number)) for digit in str(number))) == number
+
+
 #num = int(input("Enter number:"))
 num = 153
 s = check_for_armstrong(num)
