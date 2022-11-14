@@ -1,0 +1,1 @@
+# -*- coding: utf-8 -*-import pandas as pddf = pd.read_csv(    '/users/nick/programming/the_algorithms/PandasTutorial/globalAnalytics/data/Population_of_Countries.csv',    low_memory=False, encoding='cp1252')print(df.shape)print(df.head(20))# df.info# df.info()
