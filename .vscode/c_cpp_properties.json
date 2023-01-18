@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "/opt/homebrew/opt/igraph/include/igraph/",
+                "/opt/homebrew/opt/igraph/lib/",
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "macos-clang-arm64"
+            // "compilerArgs": [
+            //     "-I/opt/homebrew/opt/igraph/include/igraph",
+            //     "-L/opt/homebrew/opt/igraph/lib"
+            // ]
+        }
+    ],
+    "version": 4
+}

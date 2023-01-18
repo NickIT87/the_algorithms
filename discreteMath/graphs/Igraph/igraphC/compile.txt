@@ -1,0 +1,1 @@
+cc igraph_test.c -I/opt/homebrew/opt/igraph/include/igraph -L/opt/homebrew/opt/igraph/lib -ligraph -o igraph_test
