@@ -31,8 +31,14 @@ def read_from_db():
     #data = c.fetchall()
     #print(data)
     for row in c.fetchall():
-        print(row[0])
+        print(row[1])
 
-read_from_db()
+
+def update_data():
+    c.execute("UPDATE stuffToPlot SET value = 14.2 WHERE keyword = 'java'")
+    connection.commit()
+
+
+update_data()
 c.close()
 connection.close()
