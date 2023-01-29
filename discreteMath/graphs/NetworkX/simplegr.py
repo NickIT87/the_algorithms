@@ -35,5 +35,13 @@ G.add_edge(4, 0)
 
 # print(G._node["A"])
 
-nx.draw(G, labels=labelsDict, with_labels=True)
+nx.draw(
+    G, 
+    labels=labelsDict, 
+    with_labels=True,
+    node_color='lightgreen',
+    edge_color='b',
+    node_size = 1000,
+    width = 4
+)
 plt.show()
