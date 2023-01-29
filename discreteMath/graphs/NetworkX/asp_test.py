@@ -1,3 +1,6 @@
+#!/opt/homebrew/bin/ python3
+# -*- coding: utf-8 -*-
+
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -13,15 +16,29 @@ def ap(C:tuple, L:tuple):
 
     G = nx.Graph()
     
-    for i in range(1, len(C[0])-1):
+    for i in range(0, len(C[0])-2):
         print(i)
         G.add_edge(i, i+1)
-        if i == len(C[0])-2:
-            G.add_edge(i+1, 1)
+        if i == len(C[0])-3:
+            G.add_edge(i+1, 0)
         
+    labelsDict = {}
+    labelsDict[0] = "0_1"
+    labelsDict[1] = "1_5"
+    labelsDict[2] = "2_3"
+    labelsDict[3] = "3_5"
+    labelsDict[4] = "4_2"
 
     print(G.nodes.data())
-    nx.draw(G, with_labels=True)
+    nx.draw(
+        G, 
+        labels=labelsDict, 
+        with_labels=True,
+        node_color='lightgreen',
+        edge_color='b',
+        node_size = 1000,
+        width = 4
+    )
     plt.show()
     
     print(G)

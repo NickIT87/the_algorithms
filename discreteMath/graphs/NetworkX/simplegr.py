@@ -1,3 +1,6 @@
+#!/opt/homebrew/bin/ python3
+# -*- coding: utf-8 -*-
+
 import networkx as nx
 import matplotlib.pyplot as plt
 
