@@ -10,7 +10,7 @@ def ar():
     pass
 
 
-def ap(C:tuple, L:tuple):
+def ap(C:tuple, L:tuple, x_='1'):
     """ build graph on pair AP """
     
     # STEP 0
@@ -65,6 +65,7 @@ def ak():
 
 # TEST DATA
 # cycles
+
 testC1 = ("153521", "152431")
 # leafs
 testL1 = ("1342531", "123241", "13412", "1523")
