@@ -29,8 +29,9 @@ class CAESAR(object):
 
 def main():
     cipher = CAESAR(key=12, alpha="UA")
-    print(cipher.enc("фґв"))
-    print(cipher.dec("вмк"))
+    print(cipher.enc("Шифр Цезаря"))
+    print(cipher.dec(cipher.enc("Шифр Цезаря")))
+    print(cipher)
 
 
 if __name__ == "__main__":
