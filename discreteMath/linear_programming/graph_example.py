@@ -42,3 +42,10 @@ print('Optimal value:', objective_function(intersection[0]))
 print('Optimal solution:', intersection)
 
 plt.show()
+
+#In this example, we define the objective function 2x + y and two constraints: 
+# 3x + 4y <= 25 and 2x + y <= 10. We create a grid of x and y values, 
+# plot the objective function and constraints, and find the intersection 
+# points of the constraints. We then plot the intersection points and annotate 
+# the optimal point, which is the intersection of the constraints that maximizes 
+# the objective function. Finally, we print the optimal value and solution.
