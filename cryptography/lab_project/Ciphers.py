@@ -5,8 +5,8 @@ class Cipher(object):
         else:
             self.ABC = ' абвгґдеєжзиіїйклмнопрстуфхцчшщьюя'
         
-        if key <= 0 or key >= len(self.ABC):
-            raise ValueError('key must be Integer and greater than 0 and less than ABC length')
+        if type(key) != int or key <= 0 or key >= len(self.ABC):
+            raise ValueError('key must be Integer, greater than 0 and less than ABC length!')
         
         self.k:int = key
         self.n = len(self.ABC)
