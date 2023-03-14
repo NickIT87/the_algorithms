@@ -6,14 +6,20 @@ Created on Tue Mar  7 12:13:38 2023
 @author: Prytula Mykola 124m-22-1
 """
 
-import pandas as pd
+# https://youtu.be/-sJxwvx0P20
 
-df = pd.read_csv(
-    '/users/nick/programming/the_algorithms/PandasTutorial/lab_project/loan_applic.csv',
-    low_memory=False, encoding='cp1252'
-)
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+df = pd.read_csv('loan_applic.csv')
 
 #print(df.head(20))
-df.info()
+info = df.info()
 desc = df.describe()
+shape = df.shape
+cols = df.columns
+types = df.dtypes
+
+plt.plot(df['customer Age'])
 
