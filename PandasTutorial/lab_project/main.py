@@ -22,4 +22,12 @@ cols = df.columns
 types = df.dtypes
 
 plt.plot(df['customer Age'])
+plt.show()
+plt.plot(desc)
+plt.show()
 
+# for i in range(0, 2):
+#     plt.figure()
+#     plt.plot(df[cols[i]])
+#     plt.show()
+    
