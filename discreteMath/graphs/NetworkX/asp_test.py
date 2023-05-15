@@ -60,41 +60,64 @@ def ap(C:tuple, L:tuple, x_='1'):
 
 def ak():
     """ get canonical pair AK """
-    pass
+    print('ak')
 
 
 # TEST DATA
+# =============================================================================
 # cycles
-
-testC1 = ("153521", "152431")
+# testC1 = ("153521", "152431")
 # leafs
-testL1 = ("1342531", "123241", "13412", "1523")
+# testL1 = ("1342531", "123241", "13412", "1523")
+# =============================================================================
+
+edgelist = [
+    (0, 1),
+    (1, 2),
+    (1, 3),
+    (2, 3),
+    (2, 4),
+    (3, 4),
+    (4, 5),
+    (4, 6),
+    (6, 7)
+]
+
+labeldict = {
+    0: "1",
+    1: "2",
+    2: "3",
+    3: "4",
+    4: "1",
+    5: "2",
+    6: "5",
+    7: "3",
+}
+
+colors = [
+    "red",
+    "green",
+    "lightblue",
+    "yellow",
+    "magenta",
+    "pink",
+    "cyan",
+    "lightgreen"
+]
+
+G = nx.Graph(edgelist)
+
+nx.draw(
+    G,
+    node_color=colors,
+    edge_color='b',
+    labels=labeldict,
+    with_labels=True,
+)
+plt.show()
 
 
 # run function
-ap(testC1, testL1)
-
-
 # =============================================================================
-# edgelist = [(1, 5), (5, 3), (3, 5), (5, 2), (2, 1)]
-# 
-# #el = [(1, 5), (5, 2), (2, 4), (4, 3), (3, 1)]
-# 
-# G = nx.Graph( edgelist )
-# 
-# labeldict = {}
-# labeldict[1] = "3"
-# labeldict[2] = "3"
-# 
-# print(labeldict)
-# 
-# nx.draw(
-#     G,
-#     #node_color=["red", "green", "blue", "yellow"],
-#     node_color='lightgreen', 
-#     edge_color='b',
-#     labels=labeldict,
-#     with_labels=True,
-# )
-# plt.show()
-# =============================================================================
+# ap(testC1, testL1)
+ak()
