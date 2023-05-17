@@ -109,13 +109,22 @@ G = nx.Graph(edgelist)
 
 nx.draw(
     G,
-    node_color=colors,
+    #node_color=colors,
     edge_color='b',
-    labels=labeldict,
+    #labels=labeldict,
     with_labels=True,
 )
 plt.show()
 
+T = nx.minimum_spanning_tree(G)
+
+nx.draw(
+    T,
+    node_color="red",
+    edge_color='b',
+    with_labels=True,
+)
+plt.show()
 
 # run function
 # =============================================================================
