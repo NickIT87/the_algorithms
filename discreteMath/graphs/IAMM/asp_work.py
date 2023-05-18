@@ -1,5 +1,4 @@
-#!/opt/homebrew/bin/ python3
-# -*- coding: utf-8 -*-
+""" IAMM - Graphs - ASP Work """
 
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -34,21 +33,50 @@ node_colors = [G.nodes[node]['color'] for node in G.nodes]
 
 T = nx.minimum_spanning_tree(G)
 
-# Draw the graph
+# Create subplots
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
+
+# Draw the original graph on the first subplot (ax1)
 pos = nx.spring_layout(G)  # positions for the nodes
-nx.draw_networkx_nodes(G, pos, node_color=node_colors)
-nx.draw_networkx_edges(G, pos, edge_color='b')
-nx.draw_networkx_labels(G, pos, labels)
+nx.draw_networkx_nodes(G, pos, node_color=node_colors, ax=ax1)
+nx.draw_networkx_edges(G, pos, edge_color='b', ax=ax1)
+nx.draw_networkx_labels(G, pos, labels, ax=ax1)
+ax1.set_title('Original Graph')
+
+# Draw the minimum spanning tree on the second subplot (ax2)
+pos = nx.spring_layout(T)  # positions for the nodes
+nx.draw_networkx_nodes(T, pos, node_color=node_colors, ax=ax2)
+nx.draw_networkx_edges(T, pos, edge_color='b', ax=ax2)
+nx.draw_networkx_labels(T, pos, ax=ax2)
+ax2.set_title('Minimum Spanning Tree')
+
+# Remove the axis ticks and labels
+ax1.axis('off')
+ax2.axis('off')
+
+# Adjust the spacing between subplots
+plt.tight_layout()
 
 # Show the graph
-plt.axis('off')
 plt.show()
 
 
-def ak():
+def ak_pair(graph) -> tuple:
     """ get canonical pair AK """
-    print('ak')
+    sigma_g = None
+    lambda_g = None
+
+    ms_tree = nx.minimum_spanning_tree(graph)
+
+    # Get the degree of each vertex
+    degrees = ms_tree.degree()
+
+    # Print the degree of each vertex
+    for node, degree in degrees:
+        print(f"Vertex {node} has degree {degree}")
+
+    return (sigma_g, lambda_g)
 
 
-# run function
-ak()
+# Run function
+print(ak_pair(G))
