@@ -54,49 +54,52 @@ ax2.set_title('Minimum Spanning Tree')
 ax1.axis('off')
 ax2.axis('off')
 
-# Define the source and target nodes
-source_node = 0
-target_node = 5
 
-# Get the shortest path from source to target
-shortest_path = nx.shortest_path(G, source=source_node, target=target_node)
+def acrobatics_sort(data: list[str]) -> list[str]:
+    """ sort by dictionary rules """
+    trigger = True
+    while trigger:
+        trigger = False
+        for i in range(len(data)-1):
+            if len(data[i]) > len(data[i + 1]):
+                data[i], data[i + 1] = data[i + 1], data[i]
+                trigger = True
+            if len(data[i]) == len(data[i + 1]) and data[i] > data[i + 1]:
+                data[i], data[i + 1] = data[i + 1], data[i]
+                trigger = True
+            
 
-# Print the shortest path
-print(f"Shortest path from node {source_node} to node {target_node}:")
-print(shortest_path)
-
-
-# Adjust the spacing between subplots
-plt.tight_layout()
-
-# Show the graph
-#plt.show()
-
-
-def ak_pair(graph) -> tuple:
+def ak_pair(graph) -> tuple[list[str], list[str]]:
     """ get canonical pair AK """
-    sigma_g = None
-    lambda_g = None
-    reachability_basis: list[str] = []
+    sigma_g: list = []
+    lambda_g: list = []
+    reachability_basis: list = []
 
     if graph is not None and len(graph.nodes) != 0 and len(graph.nodes) == 1:
-        reachability_basis.append([graph.nodes[0]['label']])
+        return [graph.nodes[list(graph.nodes)[0]]['label']]
 
+    # Find reachability basis in the graph
     ms_tree = nx.minimum_spanning_tree(graph)
-
+    root = list(ms_tree.nodes)[0]
     for node in ms_tree.nodes:
-        temp_id_basis = nx.shortest_path(ms_tree, source=0, target=node)
+        temp_id_basis = nx.shortest_path(ms_tree, source=root, target=node)
         temp_lbl_basis = [ms_tree.nodes[id]['label'] for id in temp_id_basis]
         reachability_basis.append(''.join(temp_lbl_basis))
 
-    print(reachability_basis)
-
-    # Get the degree of each vertex
-    degrees = ms_tree.degree()
-
-    # Print the degree of each vertex
-    for node, degree in degrees:
-        print(f"Vertex {node} has degree {degree}")
+    # Find all cycles in the graph
+    cycles = list(nx.simple_cycles(graph))
+    for cycle in cycles:
+        tmp_cycle = [graph.nodes[id]['label'] for id in cycle]
+        tmp_cycle.append(tmp_cycle[0])
+        sigma_g.append(''.join(tmp_cycle))
+        
+    # Find all leaf nodes in the graph
+    leaf_nodes = [node for node, degree in graph.degree() if degree == 1]
+    for leaf in leaf_nodes:
+        tmp_leaf = nx.shortest_path(ms_tree, source=root, target=leaf)
+        if len(tmp_leaf) == 1: continue
+        tmp_leaf_lbl = [ms_tree.nodes[id]['label'] for id in tmp_leaf]
+        lambda_g.append(''.join(tmp_leaf_lbl))
 
     return (sigma_g, lambda_g)
 
@@ -104,3 +107,8 @@ def ak_pair(graph) -> tuple:
 # Run function
 # =============================================================================
 print(ak_pair(G))
+
+# Adjust the spacing between subplots
+plt.tight_layout()
+# Show the graph
+plt.show()
