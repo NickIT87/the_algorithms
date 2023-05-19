@@ -54,19 +54,42 @@ ax2.set_title('Minimum Spanning Tree')
 ax1.axis('off')
 ax2.axis('off')
 
+# Define the source and target nodes
+source_node = 0
+target_node = 5
+
+# Get the shortest path from source to target
+shortest_path = nx.shortest_path(G, source=source_node, target=target_node)
+
+# Print the shortest path
+print(f"Shortest path from node {source_node} to node {target_node}:")
+print(shortest_path)
+
+
 # Adjust the spacing between subplots
 plt.tight_layout()
 
 # Show the graph
-plt.show()
+#plt.show()
 
 
 def ak_pair(graph) -> tuple:
     """ get canonical pair AK """
     sigma_g = None
     lambda_g = None
+    reachability_basis: list[str] = []
+
+    if graph is not None and len(graph.nodes) != 0 and len(graph.nodes) == 1:
+        reachability_basis.append([graph.nodes[0]['label']])
 
     ms_tree = nx.minimum_spanning_tree(graph)
+
+    for node in ms_tree.nodes:
+        temp_id_basis = nx.shortest_path(ms_tree, source=0, target=node)
+        temp_lbl_basis = [ms_tree.nodes[id]['label'] for id in temp_id_basis]
+        reachability_basis.append(''.join(temp_lbl_basis))
+
+    print(reachability_basis)
 
     # Get the degree of each vertex
     degrees = ms_tree.degree()
@@ -79,4 +102,5 @@ def ak_pair(graph) -> tuple:
 
 
 # Run function
+# =============================================================================
 print(ak_pair(G))
