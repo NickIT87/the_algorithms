@@ -84,32 +84,34 @@ def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
     sigma_g: list = []
     lambda_g: list = []
     reachability_basis: list = []
+    root = list(graph.nodes)[0]
 
-    # Find reachability basis in the graph
+    # # Find reachability basis in the graph
     ms_tree = nx.minimum_spanning_tree(graph)
-    root = list(ms_tree.nodes)[0]
-    for node in ms_tree:
-        temp_id_basis = nx.shortest_path(ms_tree, source=root, target=node)
-        temp_lbl_basis = [ms_tree.nodes[id]['label'] for id in temp_id_basis]
-        reachability_basis.append(''.join(temp_lbl_basis))
-    
-    print(reachability_basis)
+    reachability_basis.extend(
+        list(map(lambda n: ''.join(
+            [ms_tree.nodes[id]['label'] 
+             for id in nx.shortest_path(ms_tree, source=root, target=n)]
+        ) , ms_tree))
+    )
 
-    # Find all cycles in the graph
-    cycles = list(nx.simple_cycles(graph))
-    for cycle in cycles:
-        tmp_cycle = [graph.nodes[id]['label'] for id in cycle]
-        tmp_cycle.append(tmp_cycle[0])
-        sigma_g.append(''.join(tmp_cycle))
-
-        
     # Find all leaf nodes in the graph
     leaf_nodes = [node for node, degree in graph.degree() if degree == 1]
-    for leaf in leaf_nodes:
-        tmp_leaf = nx.shortest_path(graph, source=root, target=leaf)
-        if len(tmp_leaf) == 1: continue
-        tmp_leaf_lbl = [graph.nodes[id]['label'] for id in tmp_leaf]
-        lambda_g.append(''.join(tmp_leaf_lbl))
+    leaf_nodes.remove(root)
+    lambda_g.extend(list(map(lambda n: reachability_basis[n], leaf_nodes)))
+    # lambda_g.extend(
+    #     list(map(lambda l: ''.join(
+    #         [graph.nodes[id]['label'] 
+    #          for id in nx.shortest_path(graph, source=root, target=l)]
+    #     ), leaf_nodes))
+    # )
+    
+    # # Find all cycles in the graph
+    # cycles = list(nx.simple_cycles(graph))
+    # for cycle in cycles:
+    #     tmp_cycle = [graph.nodes[id]['label'] for id in cycle]
+    #     tmp_cycle.append(tmp_cycle[0])
+    #     sigma_g.append(''.join(tmp_cycle))
 
     # rb = []
     # for word in reachability_basis:
@@ -136,13 +138,9 @@ def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
 
 # Run function
 # =============================================================================
-F = nx.Graph()
-
-F.add_node(0, label='2')
-
-print(ak_pair(F))
+print(ak_pair(G))
 
 # Adjust the spacing between subplots
 plt.tight_layout()
 # Show the graph
-#plt.show()
+plt.show()
