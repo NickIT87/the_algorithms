@@ -86,52 +86,31 @@ def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
     reachability_basis: list = []
     root = list(graph.nodes)[0]
 
-    # # Find reachability basis in the graph
+    # # Find reachability basis in the graph and fill lambda_g
     ms_tree = nx.minimum_spanning_tree(graph)
-    reachability_basis.extend(
-        list(map(lambda n: ''.join(
-            [ms_tree.nodes[id]['label'] 
-             for id in nx.shortest_path(ms_tree, source=root, target=n)]
-        ) , ms_tree))
-    )
+    for node in ms_tree.nodes:
+        node_path_labels = [ms_tree.nodes[id]['label'] 
+                            for id in nx.shortest_path(
+                                ms_tree, source=root, target=node)]
+        reachability_basis.append(''.join(node_path_labels))
+        if graph.degree(node) == 1 and node != root:
+            lambda_g.append(''.join(node_path_labels))
 
-    # Find all leaf nodes in the graph
-    leaf_nodes = [node for node, degree in graph.degree() if degree == 1]
-    leaf_nodes.remove(root)
-    lambda_g.extend(list(map(lambda n: reachability_basis[n], leaf_nodes)))
-    # lambda_g.extend(
-    #     list(map(lambda l: ''.join(
-    #         [graph.nodes[id]['label'] 
-    #          for id in nx.shortest_path(graph, source=root, target=l)]
-    #     ), leaf_nodes))
-    # )
     
+    # ni = [w for w in reachability_basis if w not in lambda_g]
+    # ni.pop(root)
+    # print(ni)
+
+    # for i, p in enumerate(ni):
+    #     print(i, p)
+
+
     # # Find all cycles in the graph
     # cycles = list(nx.simple_cycles(graph))
     # for cycle in cycles:
     #     tmp_cycle = [graph.nodes[id]['label'] for id in cycle]
     #     tmp_cycle.append(tmp_cycle[0])
     #     sigma_g.append(''.join(tmp_cycle))
-
-    # rb = []
-    # for word in reachability_basis:
-    #     path = []
-    #     print(word)
-    #     if len(word) == 1: continue
-    #     for label in word:
-    #         print(label)
-    #         # Define the label to search for
-    #         target_label = label
-    #         # Find the node by label
-    #         target_node = None
-    #         for node in G.nodes():
-    #             if G.nodes[node]['label'] == target_label:
-    #                 print("NODE% ", node)
-    # #                 target_node = node
-    # #             path.append(target_node)
-    # #     rb.append(path)
-
-    # # print(rb)
 
     return (sigma_g, lambda_g)
 
