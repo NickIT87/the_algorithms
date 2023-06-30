@@ -126,14 +126,21 @@ def ak_pair(graph) -> tuple[list[str], list[str]]:
     # # print(rb)
 
     # PQR & QPR from ak_clear version ...
-    # for q, p in enumerate(ni[1:]):
-    #     if ni[q] not in p[:len(ni[q])]:
-    #         qpr = ni[q] + p[::-1]
-    #         pqr = p + ni[q][::-1]
-    #         if qpr < pqr:
-    #             sigma_g.append(qpr)
-    #         else:
-    #             sigma_g.append(pqr)
+    # for p in ni:
+    #     for q in ni[1:]:
+    #         if p == q: continue
+    #         if len(p) <= len(q) and p not in q[:len(p)]:
+    #             if graph.has_edge(
+    #                 reachability_basis[p][-1], 
+    #                 reachability_basis[q][-1]
+    #             ) is False:
+    #                 continue
+    #             pqr = p + q[::-1]
+    #             qpr = q + p[::-1]
+    #             if qpr < pqr and qpr not in sigma_g:
+    #                 sigma_g.append(qpr)
+    #             elif pqr < qpr and pqr not in sigma_g:
+    #                 sigma_g.append(pqr)
 
     return (sigma_g, lambda_g)
 

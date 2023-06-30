@@ -85,11 +85,11 @@ def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
     ni = [w for w in reachability_basis.keys() if w not in lambda_g]
     ni.pop(root)
 
-    # Find cycles and fill sigma_g
-    for p in ni:
-        for q in ni[1:]:
-            if p == q: continue
-            if len(p) <= len(q) and p not in q[:len(p)]:
+    # Find cycles by ni and fill sigma_g
+    for i, p in enumerate(ni):
+        for q in ni[i+1:]:
+            print(p, q)
+            if p not in q[:len(p)]:
                 if graph.has_edge(
                     reachability_basis[p][-1], 
                     reachability_basis[q][-1]
@@ -97,10 +97,10 @@ def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
                     continue
                 pqr = p + q[::-1]
                 qpr = q + p[::-1]
-                if qpr < pqr and qpr not in sigma_g:
-                    sigma_g.append(qpr)
-                elif pqr < qpr and pqr not in sigma_g:
+                if pqr < qpr:
                     sigma_g.append(pqr)
+                else:
+                    sigma_g.append(qpr)
    
     return (sigma_g, lambda_g)
 
