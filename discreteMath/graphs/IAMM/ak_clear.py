@@ -56,20 +56,6 @@ ax1.axis('off')
 ax2.axis('off')
 
 
-def acrobatics_sort(data: list[str]):
-    """ sort by dictionary rules """
-    trigger = True
-    while trigger:
-        trigger = False
-        for i in range(len(data)-1):
-            if len(data[i]) > len(data[i + 1]):
-                data[i], data[i + 1] = data[i + 1], data[i]
-                trigger = True
-            if len(data[i]) == len(data[i + 1]) and data[i] > data[i + 1]:
-                data[i], data[i + 1] = data[i + 1], data[i]
-                trigger = True
-            
-
 def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
     """ get canonical pair AK """
 
@@ -96,21 +82,17 @@ def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
         if graph.degree(node) == 1 and node != root:
             lambda_g.append(''.join(node_path_labels))
 
-    
-    # ni = [w for w in reachability_basis if w not in lambda_g]
-    # ni.pop(root)
-    # print(ni)
+    ni = [w for w in reachability_basis if w not in lambda_g]
+    ni.pop(root)
 
-    # for i, p in enumerate(ni):
-    #     print(i, p)
-
-
-    # # Find all cycles in the graph
-    # cycles = list(nx.simple_cycles(graph))
-    # for cycle in cycles:
-    #     tmp_cycle = [graph.nodes[id]['label'] for id in cycle]
-    #     tmp_cycle.append(tmp_cycle[0])
-    #     sigma_g.append(''.join(tmp_cycle))
+    for q, p in enumerate(ni[1:]):
+        if ni[q] not in p[:len(ni[q])]:
+            qpr = ni[q] + p[::-1]
+            pqr = p + ni[q][::-1]
+            if qpr < pqr:
+                sigma_g.append(qpr)
+            else:
+                sigma_g.append(pqr)
 
     return (sigma_g, lambda_g)
 
@@ -122,4 +104,4 @@ print(ak_pair(G))
 # Adjust the spacing between subplots
 plt.tight_layout()
 # Show the graph
-plt.show()
+#plt.show()
