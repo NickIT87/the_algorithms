@@ -1,6 +1,7 @@
 """ IAMM - Graphs - ASP Work """
 
 import networkx as nx               # type: ignore
+from math import ceil, sqrt
 from typing import Tuple, List, Union
 
 
@@ -35,7 +36,6 @@ def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
     # Find cycles by ni and fill sigma_g
     for i, p in enumerate(ni):
         for q in ni[i+1:]:
-            print(p, q)
             if p not in q[:len(p)]:
                 if graph.has_edge(
                     reachability_basis[p][-1], 
@@ -50,3 +50,8 @@ def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
                     sigma_g.append(qpr)
    
     return (sigma_g, lambda_g)
+
+
+def formula(n: int, m: int) -> int:
+    mat = ceil(3/2 + sqrt(9/4 - 2 * n + 2 * m))
+    return 2 * (m - n + 1) * (n - mat + 2)
