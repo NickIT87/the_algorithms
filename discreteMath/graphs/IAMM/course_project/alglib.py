@@ -5,6 +5,30 @@ from math import ceil, sqrt
 from typing import Tuple, List, Union
 
 
+def ar():
+    """ reduction algorithm AR """
+    pass
+
+
+def ap(C:tuple, L:tuple, x_='1'):
+    """ build graph on pair AP """
+    
+    # STEP 0
+    G = nx.Graph()
+    G.add_node(0, label=C[0][0], path=C[0][0])
+    
+    # STEP 1
+    # for loop ... in progress ...    
+    for i in range(1, len(C[0])-1):
+        G.add_node(i, label=C[0][i], path=None)
+        G.add_edge(i-1, i)
+        if (i == len(C[0])-2):
+            G.add_edge(i, 0)
+    #ar(G)
+    
+    return G
+
+
 def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
     """ get canonical pair AK """
 
@@ -52,6 +76,6 @@ def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
     return (sigma_g, lambda_g)
 
 
-def formula(n: int, m: int) -> int:
+def get_pair_metrics(n: int, m: int) -> int:
     mat = ceil(3/2 + sqrt(9/4 - 2 * n + 2 * m))
     return 2 * (m - n + 1) * (n - mat + 2)

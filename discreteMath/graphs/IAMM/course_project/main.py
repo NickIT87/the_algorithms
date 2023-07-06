@@ -1,13 +1,16 @@
 import matplotlib.pyplot as plt     # type: ignore
 from alglib import *
-from data import G
+from data import G, testC1, testL1
 
 
 def print_data(G):
     # Set the node labels
     labels = nx.get_node_attributes(G, 'label')
     # Get the node colors
-    node_colors = [G.nodes[node]['color'] for node in G.nodes]
+    try:
+        node_colors = [G.nodes[node]['color'] for node in G.nodes]
+    except KeyError:
+        node_colors = "lightgreen"
 
     T = nx.minimum_spanning_tree(G)
 
@@ -42,4 +45,5 @@ def print_data(G):
 if __name__ == "__main__":
     #print(ak_pair(G))
     #print_data(G)
-    print(formula(7, 14))
+    #print(get_pair_metrics(7, 14))
+    print_data(ap(testC1, testL1))
