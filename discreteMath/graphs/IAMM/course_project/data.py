@@ -1,4 +1,27 @@
 import networkx as nx               # type: ignore
+import random
+
+
+colors = [
+    'lightcoral',
+    'lightblue',
+    'lightgreen',
+    'yellow',
+    'orange',
+    'magenta',
+    'pink',
+    'cyan'
+]
+
+def random_color():
+    # Generate random RGB values
+    r = random.randint(100, 255)
+    g = random.randint(100, 255)
+    b = random.randint(100, 255)
+
+    # Convert RGB to hex color
+    hex_color = '#{:02x}{:02x}{:02x}'.format(r, g, b)
+    return hex_color
 
 
 # TEST DATA

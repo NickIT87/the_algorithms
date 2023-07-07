@@ -4,27 +4,32 @@ import networkx as nx               # type: ignore
 from math import ceil, sqrt
 from typing import Tuple, List, Union
 
+from data import random_color
 
-def ar():
+
+def ar(G: nx.Graph) -> bool:
     """ reduction algorithm AR """
+    # G.add_node(8, label="8", color="green")
+    # G.add_edge(0, 8)
     pass
 
 
-def ap(C:tuple, L:tuple, x_='1'):
+def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
     """ build graph on pair AP """
     
     # STEP 0
     G = nx.Graph()
-    G.add_node(0, label=C[0][0], path=C[0][0])
+    G.add_node(0, label=C[0][0], color="red")
     
     # STEP 1
-    # for loop ... in progress ...    
-    for i in range(1, len(C[0])-1):
-        G.add_node(i, label=C[0][i], path=None)
+    for i, l in enumerate(C[0][1:-1], start=1):
+        print(i, l)
+        G.add_node(i, label=l, color=random_color())
         G.add_edge(i-1, i)
         if (i == len(C[0])-2):
             G.add_edge(i, 0)
-    #ar(G)
+
+    ar(G)
     
     return G
 
