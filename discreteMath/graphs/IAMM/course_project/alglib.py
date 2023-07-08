@@ -24,15 +24,15 @@ def find_equal_elements(lbls: List, nghb: List) -> Dict:
 
 def ar(G: nx.Graph) -> bool:
     """ reduction algorithm AR """
-
+    state = False
     trigger = True
+
     while trigger:
-        print("WHILE")
+        trigger = False
         for node in G.nodes:
             neighbors = list(G.neighbors(node))
             labels = [G.nodes[id]['label'] for id in neighbors]
-            equals_labels: Dict = find_equal_elements(labels, neighbors)
-
+            equals_labels = find_equal_elements(labels, neighbors)
             if equals_labels:
                 for key, value in equals_labels.items():
                     not_changeble_node = min(value)
@@ -44,9 +44,10 @@ def ar(G: nx.Graph) -> bool:
                             G.add_edge(j, not_changeble_node)
                         G.remove_node(i)
                 trigger = True
+                state = True
                 break
 
-            trigger = False
+    return state
 
 
 def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
@@ -64,7 +65,7 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
         if (i == len(C[0])-2):
             G.add_edge(i, 0)
 
-    ar(G)
+    print(ar(G))
     
     return G
 
@@ -118,4 +119,5 @@ def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
 
 def get_pair_metrics(n: int, m: int) -> int:
     mat = ceil(3/2 + sqrt(9/4 - 2 * n + 2 * m))
-    return 2 * (m - n + 1) * (n - mat + 2)
+    result = 2 * (m - n + 1) * (n - mat + 2)
+    return {"mat": mat, "result": result}
