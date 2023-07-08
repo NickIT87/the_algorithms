@@ -2,16 +2,51 @@
 
 import networkx as nx               # type: ignore
 from math import ceil, sqrt
-from typing import Tuple, List, Union
+from typing import Tuple, List, Union, Dict
 
 from data import random_color
 
 
+def find_equal_elements(lbls: List, nghb: List) -> Dict:
+    element_positions = {}
+    for index, element in enumerate(lbls):
+        if element in element_positions:
+            element_positions[element].append(nghb[index])
+        else:
+            element_positions[element] = [nghb[index]]
+
+    equal_elements = {
+        element: positions for element,
+        positions in element_positions.items() if len(positions) > 1
+    }
+    return equal_elements
+
+
 def ar(G: nx.Graph) -> bool:
     """ reduction algorithm AR """
-    # G.add_node(8, label="8", color="green")
-    # G.add_edge(0, 8)
-    pass
+
+    trigger = True
+    while trigger:
+        print("WHILE")
+        for node in G.nodes:
+            neighbors = list(G.neighbors(node))
+            labels = [G.nodes[id]['label'] for id in neighbors]
+            equals_labels: Dict = find_equal_elements(labels, neighbors)
+
+            if equals_labels:
+                for key, value in equals_labels.items():
+                    not_changeble_node = min(value)
+                    value.remove(not_changeble_node)
+                    for i in value:
+                        nghb_of_del_node = list(G.neighbors(i))
+                        nghb_of_del_node.remove(node)
+                        for j in nghb_of_del_node:
+                            G.add_edge(j, not_changeble_node)
+                        G.remove_node(i)
+                trigger = True
+                break
+
+            trigger = False
 
 
 def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
@@ -23,7 +58,7 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
     
     # STEP 1
     for i, l in enumerate(C[0][1:-1], start=1):
-        print(i, l)
+        #print(i, l)
         G.add_node(i, label=l, color=random_color())
         G.add_edge(i-1, i)
         if (i == len(C[0])-2):
