@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt     # type: ignore
 from alglib import *
-from data import G, testC1, testL1
+from data import G, testC1, testL1, testC2, testL2
 
 
 def print_data(G):
@@ -46,4 +46,4 @@ if __name__ == "__main__":
     #print(ak_pair(G))
     #print_data(G)
     #print(get_pair_metrics(7, 14))
-    print_data(ap(testC1, testL1))
+    print_data(ap(testC2, testL2))

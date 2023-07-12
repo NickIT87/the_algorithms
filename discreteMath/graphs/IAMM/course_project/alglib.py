@@ -52,7 +52,7 @@ def ar(G: nx.Graph) -> bool:
 
 def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
     """ build graph on pair AP """
-
+    print(C, L)
     def counter():
         if not hasattr(counter, 'count'):
             counter.count = 0
