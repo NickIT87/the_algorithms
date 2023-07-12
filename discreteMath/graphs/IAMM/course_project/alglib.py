@@ -52,21 +52,33 @@ def ar(G: nx.Graph) -> bool:
 
 def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
     """ build graph on pair AP """
-    
+
+    def counter():
+        if not hasattr(counter, 'count'):
+            counter.count = 0
+        counter.count += 1
+        return counter.count
+
     # STEP 0
     G = nx.Graph()
-    G.add_node(0, label=C[0][0], color="red")
-    
-    # STEP 1
-    for i, l in enumerate(C[0][1:-1], start=1):
-        #print(i, l)
-        G.add_node(i, label=l, color=random_color())
-        G.add_edge(i-1, i)
-        if (i == len(C[0])-2):
-            G.add_edge(i, 0)
+    root = 0
+    G.add_node(root, label=C[0][0], color="red")
 
-    print(ar(G))
-    
+    # STEP 1 build cycles
+    for word in C:
+        for i, l in enumerate(word[1:-1], start=1):
+            print("C1: ", i, l)
+            id = counter()
+            print("C1: ", id)
+            G.add_node(id, label=l, color=random_color())
+            if i == 1:
+                G.add_edge(root, id)
+            else:
+                G.add_edge(id - 1, id)
+            if (i == len(word) - 2):
+                G.add_edge(id, root)
+        print(ar(G))
+
     return G
 
 
