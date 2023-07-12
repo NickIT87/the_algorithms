@@ -60,11 +60,12 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
         return counter.count
 
     # STEP 0
-    G = nx.Graph()
+    q = dict()
     root = 0
+    G = nx.Graph()
     G.add_node(root, label=C[0][0], color="red")
 
-    # STEP 1 build cycles
+    # STEP 1
     for word in C:
         for i, l in enumerate(word[1:-1], start=1):
             print("C1: ", i, l)
@@ -77,6 +78,22 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
                 G.add_edge(id - 1, id)
             if (i == len(word) - 2):
                 G.add_edge(id, root)
+        print(ar(G))
+
+    # STEP 2
+    leaf_nodes = [node for node, degree in G.degree() if degree == 1]
+    node_labels = [G.nodes[id]['label'] for id in leaf_nodes]
+    q = {k: v for k, v in zip(leaf_nodes, node_labels)}
+    print(q)
+
+    for word in L:
+        for i, l in enumerate(word[1:], start=1):
+            id = counter()
+            G.add_node(id, label=l, color=random_color())
+            if i == 1:
+                G.add_edge(root, id)
+            else:
+                G.add_edge(id - 1, id)
         print(ar(G))
 
     return G
