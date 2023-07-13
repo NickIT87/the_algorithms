@@ -43,7 +43,14 @@ def print_data(G):
 # Run function
 # =============================================================================
 if __name__ == "__main__":
-    #print(ak_pair(G))
-    #print_data(G)
-    #print(get_pair_metrics(7, 14))
-    print_data(ap(testC2, testL2))
+    # AK PAIR
+    # print(ak_pair(G))
+    # print_data(G)
+    # REDUCTION
+    # print(get_pair_metrics(7, 14))
+    # AP GRAPH
+    # print_data(ap(testC1, testL1))
+    # print_data(ap(testC2, testL2))
+    MyGraph = ap(testC1, testL1)
+    print(ak_pair(MyGraph))
+    print_data(MyGraph)

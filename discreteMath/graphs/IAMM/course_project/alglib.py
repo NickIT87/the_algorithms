@@ -52,7 +52,7 @@ def ar(G: nx.Graph) -> bool:
 
 def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
     """ build graph on pair AP """
-    print(C, L)
+    #print(C, L)
     def counter():
         if not hasattr(counter, 'count'):
             counter.count = 0
@@ -68,9 +68,9 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
     # STEP 1
     for word in C:
         for i, l in enumerate(word[1:-1], start=1):
-            print("C1: ", i, l)
+            #print("C1: ", i, l)
             id = counter()
-            print("C1: ", id)
+            #print("C1: ", id)
             G.add_node(id, label=l, color=random_color())
             if i == 1:
                 G.add_edge(root, id)
@@ -78,13 +78,13 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
                 G.add_edge(id - 1, id)
             if (i == len(word) - 2):
                 G.add_edge(id, root)
-        print(ar(G))
+        ar(G)
 
     # STEP 2
     leaf_nodes = [node for node, degree in G.degree() if degree == 1]
     node_labels = [G.nodes[id]['label'] for id in leaf_nodes]
     q = {k: v for k, v in zip(leaf_nodes, node_labels)}
-    print(q)
+    #print(q)
 
     for word in L:
         for i, l in enumerate(word[1:], start=1):
@@ -94,7 +94,7 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
                 G.add_edge(root, id)
             else:
                 G.add_edge(id - 1, id)
-        print(ar(G))
+        ar(G)
 
     return G
 
@@ -116,9 +116,10 @@ def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
     reachability_basis: dict = dict()
     
     # Find reachability basis in the graph and fill lambda_g
-    for node in graph.nodes:
-        node_path_id = nx.shortest_path(graph, source=root, target=node)
-        node_path_labels = [graph.nodes[id]['label'] for id in node_path_id]
+    ms_tree = nx.minimum_spanning_tree(graph)
+    for node in ms_tree.nodes:
+        node_path_id = nx.shortest_path(ms_tree, source=root, target=node)
+        node_path_labels = [ms_tree.nodes[id]['label'] for id in node_path_id]
         reachability_basis[''.join(node_path_labels)] = node_path_id
         if graph.degree(node) == 1 and node != root:
             lambda_g.append(''.join(node_path_labels))
