@@ -52,5 +52,5 @@ if __name__ == "__main__":
     # print_data(ap(testC1, testL1))
     # print_data(ap(testC2, testL2))
     MyGraph = ap(testC1, testL1)
-    print(ak_pair(MyGraph))
+    #print(ak_pair(MyGraph))
     print_data(MyGraph)

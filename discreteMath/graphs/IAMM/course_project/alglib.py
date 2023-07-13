@@ -62,8 +62,10 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
     # STEP 0
     q = dict()
     root = 0
+    check_leaf_node = None
     G = nx.Graph()
-    G.add_node(root, label=C[0][0], color="red")
+    G.add_node(root, label=x_, color="red")
+
 
     # STEP 1
     for word in C:
@@ -94,7 +96,12 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
                 G.add_edge(root, id)
             else:
                 G.add_edge(id - 1, id)
+            if i == len(word) - 1:
+                check_leaf_node = id
         ar(G)
+        if G.has_node(check_leaf_node):
+            if G.degree(check_leaf_node) != 1:
+                raise ValueError("Incorrect data. Graph is not exists!")
 
     return G
 
