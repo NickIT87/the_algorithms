@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt     # type: ignore
 from alglib import *
-from data import G, testC1, testL1, testC2, testL2
+from data import G, testC1, testL1, testC2, testL2, testC3, testL3
 
 
 def print_data(G):

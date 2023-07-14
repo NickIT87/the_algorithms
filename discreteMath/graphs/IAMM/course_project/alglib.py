@@ -59,13 +59,18 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
         counter.count += 1
         return counter.count
 
+    def get_all_leaf_nodes_from_graph(G: nx.Graph) -> dict:
+        leaf_nodes = [node for node, degree in G.degree() if degree == 1]
+        node_labels = [G.nodes[id]['label'] for id in leaf_nodes]
+        return {k: v for k, v in zip(leaf_nodes, node_labels)}
+
     # STEP 0
     q = dict()
+    trash = dict()
     root = 0
     check_leaf_node = None
     G = nx.Graph()
     G.add_node(root, label=x_, color="red")
-
 
     # STEP 1
     for word in C:
@@ -83,11 +88,10 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
         ar(G)
 
     # STEP 2
-    leaf_nodes = [node for node, degree in G.degree() if degree == 1]
-    node_labels = [G.nodes[id]['label'] for id in leaf_nodes]
-    q = {k: v for k, v in zip(leaf_nodes, node_labels)}
-    #print(q)
+    q = get_all_leaf_nodes_from_graph(G)
+    print(q)
 
+    # STEP 3
     for word in L:
         for i, l in enumerate(word[1:], start=1):
             id = counter()
@@ -102,6 +106,26 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
         if G.has_node(check_leaf_node):
             if G.degree(check_leaf_node) != 1:
                 raise ValueError("Incorrect data. Graph is not exists!")
+        all_leafs = get_all_leaf_nodes_from_graph(G)
+        for key_id, val_label in all_leafs.items():
+            if val_label != word[-1] \
+                    and key_id not in q and key_id not in trash:
+                q[key_id] = val_label
+            else:
+                trash[key_id] = val_label
+
+    # STEP 4
+    for key_id, val_label in q.items():
+        all_paths = list(nx.all_simple_paths(G, source=root, target=key_id))
+        all_paths_labels = ["".join([G.nodes[id]['label'] for id in path]) for path in all_paths]
+        print(key_id, val_label, all_paths_labels)
+        checked = False
+        for w in all_paths_labels:
+            for p in L:
+                if w in p:
+                    checked = True
+        if not checked:
+            print("Incorrect data. Graph is not exists!")
 
     return G
 
