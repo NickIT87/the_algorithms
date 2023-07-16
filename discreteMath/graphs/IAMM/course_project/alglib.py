@@ -3,6 +3,7 @@
 import networkx as nx               # type: ignore
 from math import ceil, sqrt
 from typing import Tuple, List, Union, Dict
+import copy
 
 from data import random_color
 
@@ -48,6 +49,28 @@ def ar(G: nx.Graph) -> bool:
                 break
 
     return state
+
+
+def ar_2(G: nx.Graph) -> bool:
+    """ reduction algorithm AR 2"""
+
+    # BASE DEFINITIONS
+    reachability_basis = dict()
+
+    # STEP 0
+    G_ = copy.deepcopy(G)
+
+    # STEP 1
+    for v in G_.nodes:
+        #node_path_id = nx.shortest_path(G_, source=0, target=v)
+        all_paths = list(nx.all_simple_paths(G_, source=0, target=v))
+        paths_labels = [''.join([G_.nodes[id]['label'] for id in path]) for path in all_paths]
+        for i, w in enumerate(paths_labels):
+            print(w)
+
+    #print(reachability_basis)
+
+    return G_
 
 
 def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
