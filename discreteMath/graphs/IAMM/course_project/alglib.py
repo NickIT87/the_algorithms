@@ -8,68 +8,42 @@ import copy
 from data import random_color
 
 
-def find_equal_elements(lbls: List, nghb: List) -> Dict:
-    element_positions = {}
-    for index, element in enumerate(lbls):
-        if element in element_positions:
-            element_positions[element].append(nghb[index])
-        else:
-            element_positions[element] = [nghb[index]]
-
-    equal_elements = {
-        element: positions for element,
-        positions in element_positions.items() if len(positions) > 1
-    }
-    return equal_elements
-
-
-def ar(G: nx.Graph) -> bool:
+def ar(G: nx.Graph) -> nx.Graph:
     """ reduction algorithm AR """
-    state = False
-    trigger = True
 
+    def find_neighbours_with_the_same_labels(nghb: List, lbls: List) -> Dict:
+        element_positions = {}
+        for index, element in enumerate(lbls):
+            if element in element_positions:
+                element_positions[element].append(nghb[index])
+            else:
+                element_positions[element] = [nghb[index]]
+        equal_elements = {
+            element: positions for element,
+            positions in element_positions.items() if len(positions) > 1
+        }
+        return equal_elements
+
+    G_ = copy.deepcopy(G)
+    trigger = True
     while trigger:
         trigger = False
-        for node in G.nodes:
-            neighbors = list(G.neighbors(node))
-            labels = [G.nodes[id]['label'] for id in neighbors]
-            equals_labels = find_equal_elements(labels, neighbors)
+        for node in G_.nodes:
+            neighbors = list(G_.neighbors(node))
+            labels = [G_.nodes[id]['label'] for id in neighbors]
+            equals_labels = find_neighbours_with_the_same_labels(neighbors, labels)
             if equals_labels:
                 for key, value in equals_labels.items():
                     not_changeble_node = min(value)
                     value.remove(not_changeble_node)
-                    for i in value:
-                        nghb_of_del_node = list(G.neighbors(i))
+                    for v in value:
+                        nghb_of_del_node = list(G_.neighbors(v))
                         nghb_of_del_node.remove(node)
-                        for j in nghb_of_del_node:
-                            G.add_edge(j, not_changeble_node)
-                        G.remove_node(i)
+                        for v_ in nghb_of_del_node:
+                            G_.add_edge(v_, not_changeble_node)
+                        G_.remove_node(v)
                 trigger = True
-                state = True
                 break
-
-    return state
-
-
-def ar_2(G: nx.Graph) -> bool:
-    """ reduction algorithm AR 2"""
-
-    # BASE DEFINITIONS
-    reachability_basis = dict()
-
-    # STEP 0
-    G_ = copy.deepcopy(G)
-
-    # STEP 1
-    for v in G_.nodes:
-        #node_path_id = nx.shortest_path(G_, source=0, target=v)
-        all_paths = list(nx.all_simple_paths(G_, source=0, target=v))
-        paths_labels = [''.join([G_.nodes[id]['label'] for id in path]) for path in all_paths]
-        for i, w in enumerate(paths_labels):
-            print(w)
-
-    #print(reachability_basis)
-
     return G_
 
 

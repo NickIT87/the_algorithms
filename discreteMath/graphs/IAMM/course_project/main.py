@@ -47,7 +47,7 @@ if __name__ == "__main__":
     # print(ak_pair(G))
     # print_data(G)
     # ===== REDUCTION ======
-    print_data(ar_2(G))
+    print_data(ar(G))
     # ===== AP GRAPH =======
     # print_data(ap(testC1, testL1))
     # print_data(ap(testC2, testL2))
