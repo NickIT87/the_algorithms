@@ -82,7 +82,7 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
                 G.add_edge(id - 1, id)
             if (i == len(word) - 2):
                 G.add_edge(id, root)
-        ar(G)
+        G = ar(G)
 
     # STEP 2
     q = get_all_leaf_nodes_from_graph(G)
@@ -99,7 +99,7 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
                 G.add_edge(id - 1, id)
             if i == len(word) - 1:
                 check_leaf_node = id
-        ar(G)
+        G = ar(G)
         if G.has_node(check_leaf_node):
             if G.degree(check_leaf_node) != 1:
                 raise ValueError("Incorrect data. Graph is not exists!")
