@@ -127,6 +127,51 @@ def ap(C:tuple, L:tuple, x_='1') -> Union[nx.Graph, str]:
     return G
 
 
+def check_walk(graph: nx.Graph, word: str, node_id: int, node_lbl: str, root_node: int) -> bool:
+
+    if graph.nodes[root_node]['label'] != word[0]:
+        print("label error")
+        return False
+    if node_lbl not in word:
+        print("node_lbl not in word")
+        #return False
+
+    responce = False
+    current_node = root_node
+    previous_node = root_node
+    check_no_backup = None
+
+    for index, symbol in enumerate(word[1:], start=1):
+        neighbors = list(graph.neighbors(current_node))
+        labels = [graph.nodes[id]['label'] for id in neighbors]
+
+        try:
+            next_node = neighbors[labels.index(symbol)]
+        except ValueError:
+            print("No symbol in labels")
+            return False
+
+        if current_node == node_id and graph.nodes[current_node]['label'] == node_lbl:
+            check_no_backup = previous_node
+            print("ChecknoBackup", check_no_backup)
+
+        if current_node == check_no_backup:
+            print("current node == backup")
+            return False
+
+        print("prev, cur, next ", previous_node, current_node, next_node)
+
+        previous_node = current_node
+        current_node = next_node
+
+        if current_node != node_id:
+            return False
+
+    responce = True
+
+    return responce
+
+
 def ak_pair(graph: nx.Graph) -> Union[Tuple[List[str], List[str]], int, str]:
     """ get canonical pair AK """
 
