@@ -1,4 +1,5 @@
 #include <igraph.h>
+#include <stdio.h>
 
 int main(void) {
     igraph_integer_t num_vertices = 1000;
@@ -16,6 +17,25 @@ int main(void) {
     printf("Diameter of a random graph with average degree %g: %g\n",
             2.0 * igraph_ecount(&graph) / igraph_vcount(&graph),
             (double) diameter);
+
+
+     // Step 1: Declare a FILE pointer
+    FILE *file;
+
+    // Step 2: Open the file in write mode ("w")
+    file = fopen("igraph_test.gml", "w");
+
+    // Step 3: Check if the file was opened successfully
+    if (file == NULL) {
+        printf("Failed to create the file.\n");
+        return 1; // Exit the program with an error code
+    }
+
+    /* Output as GML */
+    igraph_write_graph_gml(&graph, file, IGRAPH_WRITE_GML_DEFAULT_SW,  0, "");
+
+    // Step 4: Close the file
+    fclose(file);
 
     igraph_destroy(&graph);
 
