@@ -1,24 +1,35 @@
 import random
 import networkx as nx
 from deap import base, creator, tools, algorithms
+import matplotlib.pyplot as plt
 
-# Создание графа с помощью NetworkX
+
+# Создание графа с фиксированными узлами и рёбрами
 def create_graph():
-    G = nx.erdos_renyi_graph(n=10, p=0.5, seed=42)  # Генерируем случайный граф
+    G = nx.Graph()
+    G.add_nodes_from(range(1, 17))  # Узлы с 1 до 16
+    G.add_edges_from([
+        (1, 2), (1, 4), (1, 10),
+        (2, 3), (2, 6), (2, 11), (2, 12), (2, 13),
+        (3, 4), (3, 5), (3, 9),
+        (5, 6), (6, 7), (6, 8), (8, 17),
+        (10, 11), (11, 12), (12, 13), (12, 14),
+        (13, 14), (14, 15), (15, 16)
+    ])
     return G
+
 
 # Функция оценки: минимизация количества цветов и предотвращение конфликтов
 def evaluate(individual, graph):
-    color_map = {node: individual[node] for node in graph.nodes}
-    num_colors = len(set(color_map.values()))
+    if len(individual) != len(graph.nodes):
+        raise ValueError("Длина индивидуума не совпадает с числом узлов графа")
     
-    # Проверка на наличие конфликтов
-    conflicts = 0
-    for node1, node2 in graph.edges:
-        if color_map[node1] == color_map[node2]:  # Одинаковые цвета у соседей
-            conflicts += 1
-
+    color_map = {node: individual[node - 1] for node in graph.nodes}  # Узлы нумеруются с 1
+    num_colors = len(set(color_map.values()))
+    conflicts = sum(1 for u, v in graph.edges if color_map[u] == color_map[v])
+    
     return num_colors + conflicts * len(graph.nodes),  # Целевая функция
+
 
 # Настройка генетического алгоритма
 def setup_ga(graph):
@@ -29,7 +40,7 @@ def setup_ga(graph):
     toolbox = base.Toolbox()
     
     # Индивидуум: раскраска графа (список цветов для каждой вершины)
-    num_nodes = len(graph.nodes)
+    num_nodes = len(graph.nodes)  # Число узлов графа
     toolbox.register("attr_color", random.randint, 0, num_nodes - 1)
     toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_color, n=num_nodes)
     toolbox.register("population", tools.initRepeat, list, toolbox.individual)
@@ -41,6 +52,14 @@ def setup_ga(graph):
     toolbox.register("select", tools.selTournament, tournsize=3)
 
     return toolbox
+
+
+# Визуализация графа
+def visualize_graph(graph, color_map):
+    pos = nx.spring_layout(graph, seed=42)
+    nx.draw(graph, pos, node_color=color_map, with_labels=True, cmap='tab20')
+    plt.show()
+
 
 # Основная функция
 def main():
@@ -61,10 +80,9 @@ def main():
     print(f"Целевая функция: {evaluate(best_individual, graph)}")
 
     # Визуализация
-    color_map = [best_individual[node] for node in graph.nodes]
-    nx.draw(graph, node_color=color_map, with_labels=True, cmap='tab20')
-    import matplotlib.pyplot as plt
-    plt.show()
+    color_map = [best_individual[node - 1] for node in graph.nodes]
+    visualize_graph(graph, color_map)
+
 
 if __name__ == "__main__":
     main()
