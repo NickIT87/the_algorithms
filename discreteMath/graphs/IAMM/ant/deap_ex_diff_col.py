@@ -1,7 +1,29 @@
 import random
+import os
 import networkx as nx
 from deap import base, creator, tools, algorithms
 import matplotlib.pyplot as plt
+
+
+def col_to_networkx(col_file_path):
+    G = nx.Graph()
+    
+    with open(col_file_path, 'r') as file:
+        for line in file:
+            if line.startswith('c'):
+                # Comment line, ignore
+                continue
+            elif line.startswith('p'):
+                # Problem line, get the number of nodes and edges (optional for NetworkX)
+                _, _, num_nodes, num_edges = line.split()
+                num_nodes, num_edges = int(num_nodes), int(num_edges)
+                G.add_nodes_from(range(1, int(num_nodes)))
+            elif line.startswith('e'):
+                # Edge line, add edge between nodes
+                _, node1, node2 = line.split()
+                G.add_edge(int(node1), int(node2))
+                
+    return G
 
 
 # Создание графа с фиксированными узлами и рёбрами
@@ -63,12 +85,23 @@ def visualize_graph(graph, color_map):
 
 # Основная функция
 def main():
-    graph = create_graph()
+    
+    # Define the name of the .col file
+    col_file_name = "anna.col"
+
+    # Get the current directory of this script
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Define the full path to the .col file
+    col_file_path = os.path.join(current_dir, col_file_name)
+    
+    #graph = create_graph()
+    graph = col_to_networkx(col_file_path)
     toolbox = setup_ga(graph)
 
     # Инициализация популяции
     population = toolbox.population(n=100)
-    ngen, cxpb, mutpb = 100, 0.7, 0.2
+    ngen, cxpb, mutpb = 10000, 0.7, 0.2
 
     # Запуск генетического алгоритма
     result_population, _ = algorithms.eaSimple(population, toolbox, cxpb=cxpb, mutpb=mutpb, ngen=ngen, 
