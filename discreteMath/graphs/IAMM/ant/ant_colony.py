@@ -238,7 +238,7 @@ if os.path.exists(col_file_path):
 
     # Parameters for the algorithm
     num_colors = 14
-    solution, colors_used = ant_colony_coloring(graph, num_colors, max_iter=1000)
+    solution, colors_used = ant_colony_coloring(graph, num_colors, num_ants=50, max_iter=1000)
 
     # Count conflicts in the solution
     conflicts = count_conflicts(graph, solution)
