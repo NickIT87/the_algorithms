@@ -4,7 +4,7 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 
 # Размер сетки (например, 10x10)
-grid_size = (20, 20)
+grid_size = (10, 10)
 
 # Типы ландшафтов (кодируем числами)
 land_types = {
@@ -37,13 +37,13 @@ roads = [
 fig, ax = plt.subplots(figsize=(8, 8), subplot_kw={'projection': ccrs.PlateCarree()})
 
 # Добавление географических элементов
-ax.set_extent([-15, 15, -15, 15])  # Условные координаты
+ax.set_extent([-10, 10, -10, 10])  # Условные координаты
 ax.add_feature(cfeature.BORDERS, linestyle=':', edgecolor='red')  # Границы
 ax.add_feature(cfeature.COASTLINE, edgecolor='red')  # Побережья
-
+ax.stock_img()
 # Размер клетки
-dx = 20 / grid_size[1]
-dy = 20 / grid_size[0]
+dx = 10 / grid_size[1]
+dy = 10 / grid_size[0]
 
 # Рисуем сетку
 for i in range(grid_size[0]):
